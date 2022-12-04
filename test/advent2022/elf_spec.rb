@@ -30,6 +30,14 @@ describe Advent2022::Elf do
         _(elves.count).must_equal 5
         _(elves.select { |x| x.is_a?(Advent2022::Elf) }.count).must_equal 5
       end
+
+      it 'should set the calorie totals' do
+        _(elves[0].calories).must_equal 6000
+        _(elves[1].calories).must_equal 4000
+        _(elves[2].calories).must_equal 11_000
+        _(elves[3].calories).must_equal 24_000
+        _(elves[4].calories).must_equal 10_000
+      end
     end
   end
 end
