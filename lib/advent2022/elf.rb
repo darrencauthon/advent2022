@@ -15,6 +15,14 @@ class Advent2022::Elf
   end
 
   def find_someone_to_ask_for_snacks(elves)
-    elves.reject { |e| e.object_id == object_id }.max_by(&:calories)
+    find_those_to_ask_for_snacks(elves)[0]
+  end
+
+  def find_those_to_ask_for_snacks(elves)
+    elves
+      .reject { |e| e.object_id == object_id }
+      .sort_by(&:calories)
+      .reverse
+      .take(3)
   end
 end

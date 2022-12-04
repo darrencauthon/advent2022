@@ -62,10 +62,24 @@ describe Advent2022::Elf do
           end
         end
       end
+
+      describe 'finding all to ask for snacks' do
+        let(:results) { elf.find_those_to_ask_for_snacks(elves) }
+
+        describe 'elf 0' do
+          let(:elf) { elves[0] }
+
+          it 'should return the elf with the most calories' do
+            _(results.count).must_equal 3
+            _(results[0]).must_be_same_as elves[3]
+            _(results[1]).must_be_same_as elves[2]
+            _(results[2]).must_be_same_as elves[4]
+          end
+        end
+      end
     end
 
     describe 'the real test file' do
-
       let(:calorie_list) do
         <<~TEXT
           1000
@@ -2346,6 +2360,16 @@ describe Advent2022::Elf do
 
         it 'should return the elf with the most' do
           _(stocked_elf.calories).must_equal 71_023
+        end
+      end
+
+      describe 'finding all to ask for snacks' do
+        let(:hungry_elf) { Advent2022::Elf.new(calories: 0) }
+        let(:stocked_elves) { hungry_elf.find_those_to_ask_for_snacks(elves) }
+
+        it 'should return the elf with the most calories' do
+          _(stocked_elves.count).must_equal 3
+          _(stocked_elves.sum(&:calories)).must_equal 206_289
         end
       end
     end
