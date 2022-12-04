@@ -2345,7 +2345,7 @@ describe Advent2022::Elf do
         let(:stocked_elf) { hungry_elf.find_someone_to_ask_for_snacks(elves) }
 
         it 'should return the elf with the most' do
-          _(stocked_elf.calories).must_equal 71023
+          _(stocked_elf.calories).must_equal 71_023
         end
       end
     end
