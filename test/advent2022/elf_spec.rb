@@ -38,6 +38,30 @@ describe Advent2022::Elf do
         _(elves[3].calories).must_equal 24_000
         _(elves[4].calories).must_equal 10_000
       end
+
+      describe 'figuring out who to ask for snacks' do
+        describe 'asking for elves that do not have the most' do
+          let(:result) { elf.find_someone_to_ask_for_snacks(elves) }
+
+          [0, 1, 2, 4].each do |elf_index|
+            describe "elf # #{elf_index}" do
+              let(:elf) { elves[elf_index] }
+
+              it 'should return the elf with the most calories' do
+                _(result).must_be_same_as elves[3]
+              end
+            end
+          end
+
+          describe 'the elf with the most' do
+            let(:elf) { elves[3] }
+
+            it 'should return the elf with second-most calories' do
+              _(result).must_be_same_as elves[2]
+            end
+          end
+        end
+      end
     end
   end
 end

@@ -13,4 +13,8 @@ class Advent2022::Elf
   def initialize(calories:)
     @calories = calories
   end
+
+  def find_someone_to_ask_for_snacks(elves)
+    elves.reject { |e| e.object_id == object_id }.max_by(&:calories)
+  end
 end
