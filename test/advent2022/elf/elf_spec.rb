@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-describe Advent2022::Elf do
+describe 'dealing with elf calories' do
   describe :from_calories do
     let(:elves) { Advent2022::Elf.from_calories(calorie_list) }
 

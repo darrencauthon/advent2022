@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    advent2022 (1.0.0)
+    advent2022 (2.0.0)
 
 GEM
   remote: https://rubygems.org/
