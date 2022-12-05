@@ -2,9 +2,16 @@
 
 class Advent2022::Rochambeau
   def winner(player_one, player_two)
-    plays = [player_one, player_two]
-    return player_one == :rock ? 1 : 2 if plays.include?(:scissors)
+    return 1 if one_beats_two(player_one, player_two)
 
-    player_one == :paper ? 1 : 2
+    2
+  end
+
+  private
+
+  def one_beats_two(one, two)
+    return true if one == :paper && two == :rock
+    return true if one == :rock && two == :scissors
+    return true if one == :scissors && two == :paper
   end
 end
