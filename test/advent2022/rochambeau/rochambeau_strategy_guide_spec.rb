@@ -16,8 +16,10 @@ describe Advent2022::RochambeauStrategyGuide do
       TEXT
     end
 
-    it 'should get a total score of 15' do
-      _(score).must_equal 15
+    describe 'scoring' do
+      it 'should get a total score of 15' do
+        _(score).must_equal 15
+      end
     end
 
     describe 'getting the raw moves' do
@@ -29,6 +31,28 @@ describe Advent2022::RochambeauStrategyGuide do
         _(moves[0]).must_equal [1, 0]
         _(moves[1]).must_equal [0, 1]
         _(moves[2]).must_equal [2, 2]
+      end
+    end
+
+    describe 'but now we are using the second strategy guide' do
+      let(:strategy_guide) { Advent2022::RochambeauStrategyGuideVersionTwo.new }
+
+      describe 'scoring' do
+        it 'should get a total score of 12' do
+          _(score).must_equal 12
+        end
+      end
+
+      describe 'getting the raw moves' do
+        let(:moves) { strategy_guide.moves(guide) }
+
+        it 'should produce the moves' do
+          _(moves.count).must_equal 3
+
+          _(moves[0]).must_equal [0, 0]
+          _(moves[1]).must_equal [0, 1]
+          _(moves[2]).must_equal [0, 2]
+        end
       end
     end
   end

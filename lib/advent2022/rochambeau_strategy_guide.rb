@@ -24,3 +24,9 @@ class Advent2022::RochambeauStrategyGuide
       .sum
   end
 end
+
+class Advent2022::RochambeauStrategyGuideVersionTwo < Advent2022::RochambeauStrategyGuide
+  def moves(guide)
+    super.map.map { |x| x[1] }.map { |x| [0, x] }
+  end
+end
