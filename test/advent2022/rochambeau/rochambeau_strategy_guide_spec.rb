@@ -2566,5 +2566,13 @@ describe Advent2022::RochambeauStrategyGuide do
     it 'should get a total score of 13_268' do
       _(score).must_equal 13_268
     end
+
+    describe 'but now we are using the second strategy guide' do
+      let(:strategy_guide) { Advent2022::RochambeauStrategyGuideVersionTwo.new }
+
+      it 'should get a total score of 13699' do
+        _(score).must_equal 13_699
+      end
+    end
   end
 end
