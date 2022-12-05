@@ -2570,8 +2570,48 @@ describe Advent2022::RochambeauStrategyGuide do
     describe 'but now we are using the second strategy guide' do
       let(:strategy_guide) { Advent2022::RochambeauStrategyGuideVersionTwo.new }
 
-      it 'should get a total score of 13699' do
-        _(score).must_equal 13_699
+      it 'should get a total score of 15508' do
+        _(score).must_equal 15_508
+      end
+    end
+  end
+
+  describe 'a handwritten example' do
+    let(:guide) do
+      <<~TEXT
+        A X
+        A Y
+        A Z
+        B X
+        B Y
+        B Z
+        C X
+        C Y
+        C Z
+      TEXT
+    end
+
+    describe 'but now we are using the second strategy guide' do
+      let(:strategy_guide) { Advent2022::RochambeauStrategyGuideVersionTwo.new }
+
+      describe 'getting the raw moves' do
+        let(:moves) { strategy_guide.moves(guide) }
+
+        it 'should produce the moves' do
+          _(moves.count).must_equal 9
+
+          _(moves[0]).must_equal [2, 0]
+          _(moves[1]).must_equal [0, 0]
+          _(moves[2]).must_equal [1, 0]
+
+          _(moves[3]).must_equal [0, 1]
+          _(moves[4]).must_equal [1, 1]
+          _(moves[5]).must_equal [2, 1]
+
+          _(moves[6]).must_equal [1, 2]
+          _(moves[7]).must_equal [2, 2]
+          _(moves[8]).must_equal [0, 2]
+        end
       end
     end
   end

@@ -27,6 +27,24 @@ end
 
 class Advent2022::RochambeauStrategyGuideVersionTwo < Advent2022::RochambeauStrategyGuide
   def moves(guide)
-    super.map.map { |x| x[1] }.map { |x| [0, x] }
+    mapping = { 0 => :lose, 1 => :tie, 2 => :beat }
+    super.map do |x, y|
+      [send(mapping[x], y), y]
+    end
+  end
+
+  def beat(move)
+    return 1 if move.zero?
+    return 2 if move == 1
+
+    0
+  end
+
+  def lose(move)
+    [0, 1, 2].reject { |x| x == move }.reject { |x| x == beat(move) }.first
+  end
+
+  def tie(move)
+    move
   end
 end
