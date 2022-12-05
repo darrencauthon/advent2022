@@ -9,4 +9,9 @@ describe Advent2022::Rochambeau do
     _(rochambeau.winner(:paper, :rock)).must_equal 1
     _(rochambeau.winner(:rock, :paper)).must_equal 2
   end
+
+  it 'rock beats scissors' do
+    _(rochambeau.winner(:rock, :scissors)).must_equal 1
+    _(rochambeau.winner(:scissors, :rock)).must_equal 2
+  end
 end
