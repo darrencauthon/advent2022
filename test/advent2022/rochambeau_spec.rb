@@ -56,4 +56,27 @@ describe Advent2022::Rochambeau do
       _(rochambeau.winner(scissors, scissors)).must_be_nil
     end
   end
+
+  describe 'scoring' do
+    it 'paper beats rock, 6 + 1' do
+      _(rochambeau.score(:paper, :rock)).must_equal [6 + 1, 0]
+      _(rochambeau.score(:rock, :paper)).must_equal [0, 6 + 1]
+    end
+
+    it 'rock beats scissors, 6 + 2' do
+      _(rochambeau.score(:rock, :scissors)).must_equal [6 + 2, 0]
+      _(rochambeau.score(:scissors, :rock)).must_equal [0, 6 + 2]
+    end
+
+    it 'scissors beat paper, 6 + 3' do
+      _(rochambeau.score(:scissors, :paper)).must_equal [6 + 3, 0]
+      _(rochambeau.score(:paper, :scissors)).must_equal [0, 6 + 3]
+    end
+
+    it 'ties get 3 points per player' do
+      _(rochambeau.score(:paper, :paper)).must_equal [3, 3]
+      _(rochambeau.score(:rock, :rock)).must_equal [3, 3]
+      _(rochambeau.score(:scissors, :scissors)).must_equal [3, 3]
+    end
+  end
 end

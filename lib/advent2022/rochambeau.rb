@@ -15,11 +15,26 @@ class Advent2022::Rochambeau
     one_beats_two(player_one, player_two) ? 0 : 1
   end
 
+  def score(player_one, player_two)
+    return [3, 3] unless winner(player_one, player_two) || winner(player_two, player_one)
+
+    [
+      winner(player_one, player_two).zero? ? 6 + score_for(player_one) : 0,
+      winner(player_two, player_one).zero? ? 6 + score_for(player_two) : 0
+    ]
+  end
+
   private
 
   def one_beats_two(one, two)
     return true if one == paper && two == rock
     return true if one == rock && two == scissors
     return true if one == scissors && two == paper
+  end
+
+  def score_for(play)
+    return 3 if play == scissors
+
+    play == rock ? 2 : 1
   end
 end
