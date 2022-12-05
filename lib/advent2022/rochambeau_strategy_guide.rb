@@ -7,7 +7,7 @@ class Advent2022::RochambeauStrategyGuide
     @rochambeau = Advent2022::Rochambeau.new(rock: 0, paper: 1, scissors: 2)
   end
 
-  def score(guide)
+  def moves(guide)
     start = %w[A X]
 
     guide
@@ -15,6 +15,10 @@ class Advent2022::RochambeauStrategyGuide
       .map(&:split)
       .map { |x| x.each_with_index.map { |y, i| y.ord - start[i].ord } }
       .map(&:reverse) # the guide shows opponents first
+  end
+
+  def score(guide)
+    moves(guide)
       .map { |x| rochambeau.score(*x) }
       .map(&:first)
       .sum
