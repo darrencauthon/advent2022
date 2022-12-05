@@ -10,10 +10,10 @@ class Advent2022::Rochambeau
   end
 
   def winner(player_one, player_two)
-    return 0 if player_one == player_two
-    return 1 if one_beats_two(player_one, player_two)
+    return nil if player_one == player_two
+    return 0 if one_beats_two(player_one, player_two)
 
-    2
+    1
   end
 
   private
