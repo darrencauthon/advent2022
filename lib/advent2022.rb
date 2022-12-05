@@ -2,6 +2,7 @@
 
 require_relative 'advent2022/elf'
 require_relative 'advent2022/rochambeau'
+require_relative 'advent2022/rochambeau_strategy_guide'
 require_relative 'advent2022/version'
 
 module Advent2022
