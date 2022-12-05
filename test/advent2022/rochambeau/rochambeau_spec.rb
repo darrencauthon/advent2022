@@ -73,10 +73,10 @@ describe Advent2022::Rochambeau do
       _(rochambeau.score(:paper, :scissors)).must_equal [2, 6 + 3]
     end
 
-    it 'ties get 3 points per player' do
-      _(rochambeau.score(:paper, :paper)).must_equal [3, 3]
-      _(rochambeau.score(:rock, :rock)).must_equal [3, 3]
-      _(rochambeau.score(:scissors, :scissors)).must_equal [3, 3]
+    it 'ties get 6 points per player' do
+      _(rochambeau.score(:paper, :paper)).must_equal [3 + 2, 3 + 2]
+      _(rochambeau.score(:rock, :rock)).must_equal [3 + 1, 3 + 1]
+      _(rochambeau.score(:scissors, :scissors)).must_equal [3 + 3, 3 + 3]
     end
   end
 end

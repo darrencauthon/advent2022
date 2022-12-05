@@ -16,8 +16,8 @@ describe Advent2022::RochambeauStrategyGuide do
       TEXT
     end
 
-    it 'should get a total score of 12' do
-      _(score).must_equal 12
+    it 'should get a total score of 15' do
+      _(score).must_equal 15
     end
   end
 
@@ -2527,8 +2527,8 @@ describe Advent2022::RochambeauStrategyGuide do
       TEXT
     end
 
-    it 'should get a total score of 10298' do
-      _(score).must_equal 10_298
+    it 'should get a total score of 13_268' do
+      _(score).must_equal 13_268
     end
   end
 end

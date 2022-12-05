@@ -16,12 +16,18 @@ class Advent2022::Rochambeau
   end
 
   def score(player_one, player_two)
-    return [3, 3] unless winner(player_one, player_two) || winner(player_two, player_one)
+    score = [0, 0]
 
-    [
-      (winner(player_one, player_two).zero? ? 6 : 0) + score_for(player_one),
-      (winner(player_two, player_one).zero? ? 6 : 0) + score_for(player_two)
-    ]
+    if (win = winner(player_one, player_two))
+      score[win] = 6
+    else
+      [0, 1].each { |i| score[i] = 3 }
+    end
+
+    score[0] += score_for(player_one)
+    score[1] += score_for(player_two)
+
+    score
   end
 
   private
