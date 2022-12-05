@@ -19,4 +19,10 @@ describe Advent2022::Rochambeau do
     _(rochambeau.winner(:scissors, :paper)).must_equal 1
     _(rochambeau.winner(:paper, :scissors)).must_equal 2
   end
+
+  it 'ties get no winner' do
+    _(rochambeau.winner(:paper, :paper)).must_equal 0
+    _(rochambeau.winner(:rock, :rock)).must_equal 0
+    _(rochambeau.winner(:scissors, :scissors)).must_equal 0
+  end
 end
